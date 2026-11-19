@@ -12,7 +12,7 @@ configuracion::configuracion():
     restitucionBloque(0.55),
     factorDanio(1.5),
     danioFuegoAmigo(true),
-    tiempoMaxTurno(20.0),
+    tiempoMaxTurno(15.0),
     maxImpactosBloque(3),
     resistenciaColumna(200.0),
     resistenciaTecho(100.0) {}

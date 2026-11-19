@@ -25,6 +25,7 @@ public:
     void rebotarPared(double ancho, double alto);
 
     // magnitud velocidad
+
     double getRapidez() const;
 
     // Getters para consultar el estado interno de la particula

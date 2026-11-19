@@ -98,14 +98,14 @@ void Simulador::construirEscenarioInicial() {
     double resTech = cfg.getResistenciaTecho();
 
     // Base Jugador 1
-    obstaculos.push_back(new Obstaculo(8.0,  0.0,  6.0, 16.0, e, resCol, 1));  // Columna izq (200)[cite: 5]
-    obstaculos.push_back(new Obstaculo(26.0, 0.0,  6.0, 16.0, e, resCol, 1));  // Columna der (200)[cite: 5]
-    obstaculos.push_back(new Obstaculo(8.0,  16.0, 24.0, 6.0, e, resTech, 1)); // Techo (100)[cite: 5]
+    obstaculos.push_back(new Obstaculo(8.0,  0.0,  6.0, 16.0, e, resCol, 1));  // Columna izq (200)
+    obstaculos.push_back(new Obstaculo(26.0, 0.0,  6.0, 16.0, e, resCol, 1));  // Columna der (200)
+    obstaculos.push_back(new Obstaculo(8.0,  16.0, 24.0, 6.0, e, resTech, 1)); // Techo (100)
 
     // Base Jugador 2
-    obstaculos.push_back(new Obstaculo(68.0, 0.0,  6.0, 16.0, e, resCol, 2));  // Columna izq (200)[cite: 5]
-    obstaculos.push_back(new Obstaculo(86.0, 0.0,  6.0, 16.0, e, resCol, 2));  // Columna der (200)[cite: 5]
-    obstaculos.push_back(new Obstaculo(68.0, 16.0, 24.0, 6.0, e, resTech, 2)); // Techo (100)[cite: 5]
+    obstaculos.push_back(new Obstaculo(68.0, 0.0,  6.0, 16.0, e, resCol, 2));  // Columna izq (200)
+    obstaculos.push_back(new Obstaculo(86.0, 0.0,  6.0, 16.0, e, resCol, 2));  // Columna der (200)
+    obstaculos.push_back(new Obstaculo(68.0, 16.0, 24.0, 6.0, e, resTech, 2)); // Techo (100)
 
     // cañones
     jugador1 = new Jugador(1, 4.0,  34.0, 17.5, 0.0, 5.0, 10.0);
@@ -123,7 +123,7 @@ void Simulador::reiniciarPartida() {
 
 bool Simulador::disparar(double anguloGrados, double velocidadInicial) {
     if (disparoEnCurso || ganador != 0) return false;
-    if (anguloGrados < 0.0 || anguloGrados > 90.0) return false;   // <- línea nueva
+    if (anguloGrados < 0.0 || anguloGrados > 90.0) return false;
     double v0 = std::min(std::max(velocidadInicial, cfg.getVelocidadMin()), cfg.getVelocidadMax());
     double rad = anguloGrados * M_PI / 180.0;
     Jugador* tirador = (turnoActual == 1) ? jugador1 : jugador2;
