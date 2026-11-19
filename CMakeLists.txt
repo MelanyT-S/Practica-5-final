@@ -27,3 +27,7 @@ add_executable(proyecto5
 )
 
 target_link_libraries(proyecto5 PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+
+target_compile_definitions(proyecto5 PRIVATE
+    PROJECT_SOURCE_DIR_MACRO="${CMAKE_CURRENT_SOURCE_DIR}"
+)

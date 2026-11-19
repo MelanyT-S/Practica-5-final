@@ -25,8 +25,11 @@ MainWindow::MainWindow(QWidget *parent)
     // Instanciar el simulador fisico de la partida
     simulador = new Simulador();
 
-    // Cargar el sprite del canon desde el directorio de trabajo
-    spriteCanon.load("canon.png");
+    // Cargar el sprite del canon desde la carpeta del CMakeLists.txt o ruta local
+    QString rutaCanonFuente = QString::fromUtf8(PROJECT_SOURCE_DIR_MACRO) + "/canon.png";
+    if (!spriteCanon.load(rutaCanonFuente)) {
+        spriteCanon.load("canon.png");
+    }
 
     // Configurar el temporizador para avanzar el paso fisico y redibujar la escena
     temporizador = new QTimer(this);
