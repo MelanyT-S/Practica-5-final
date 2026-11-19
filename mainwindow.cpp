@@ -10,8 +10,6 @@
 #include <QPen>
 #include <QBrush>
 #include <cmath>
-#include <queue>
-#include <utility>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -222,12 +220,17 @@ void MainWindow::actualizarEstadoTurno()
 
     if (ganador != 0) {
         ui->btnDisparar->setEnabled(false);
+        ui->statusbar->showMessage(
+            QString("Partida finalizada - Ganador: Jugador %1").arg(ganador)
+            );
         return;
     }
 
     ui->btnDisparar->setEnabled(!enCurso);
+    ui->statusbar->showMessage(
+        QString("Turno actual: Jugador %1").arg(simulador->getTurnoActual())
+        );
 }
-
 // Lee el angulo y la velocidad ingresados y solicita el disparo al simulador
 void MainWindow::on_btnDisparar_clicked()
 {
@@ -251,6 +254,15 @@ void MainWindow::on_btnDisparar_clicked()
     } else {
         QMessageBox::warning(this, "Parametros fuera de rango", "El angulo debe estar entre 0 y 90 grados.");
     }
+}
+void MainWindow::on_btnReiniciar_clicked()
+{
+    temporizador->stop();
+    simulador->reiniciarPartida();
+    ui->txtAngulo->clear();
+    ui->txtVelocidad->clear();
+    actualizarEstadoTurno();
+    dibujarEscenario();
 }
 
 // Avanza un paso de simulacion, actualiza la pantalla y verifica si hay ganador

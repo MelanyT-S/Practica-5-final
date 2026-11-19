@@ -23,6 +23,7 @@ public:
 
 private slots:
     void on_btnDisparar_clicked();
+    void on_btnReiniciar_clicked();
     void actualizarEscena();
 
 private:
